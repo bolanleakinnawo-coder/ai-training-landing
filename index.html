@@ -196,6 +196,34 @@
       @media (max-width: 900px) {
         .hero-grid {
           grid-template-columns: 1fr;
+          gap: 18px 0;
+        }
+        .hero-copy {
+          display: contents;
+        }
+        .hero-copy > .eyebrow {
+          order: 1;
+        }
+        .hero-copy > h1 {
+          order: 2;
+        }
+        .hero-copy > .lede {
+          order: 3;
+        }
+        .hero-grid > .ba-card {
+          order: 4;
+        }
+        .hero-copy > .price-cta {
+          order: 5;
+        }
+        .hero-copy > .pill-grid {
+          order: 6;
+        }
+        .hero h1 {
+          margin: 10px 0 12px;
+        }
+        .hero p.lede {
+          margin-bottom: 0;
         }
       }
       .hero h1 {
@@ -1400,7 +1428,7 @@
     <!-- ============ HERO ============ -->
     <header class="hero">
       <div class="wrap hero-grid">
-        <div>
+        <div class="hero-copy">
           <span class="eyebrow">✨ The hottest AI skill of 2026</span>
           <h1>
             Learn how to transform yourself into
@@ -1441,49 +1469,6 @@
 
         <div class="ba-card">
           <img src="1.jpeg" alt="Create stunning AI videos without a camera" />
-          <div class="ba-caption">
-            <div class="headline">AI TRANSFORMATION</div>
-            <div
-              class="sub"
-              style="
-                font-size: 22px;
-                font-weight: 800;
-                letter-spacing: 0.04em;
-                color: #fff;
-              "
-            >
-              HOLLYWOOD UPGRADE
-            </div>
-            <div class="sub">FROM ORDINARY TO EXTRAORDINARY</div>
-          </div>
-          <div class="ba-play">
-            <span class="tri">▶</span> Watch the magic happen
-          </div>
-        </div>
-      </div>
-
-      <div class="wrap">
-        <div class="stats-bar">
-          <div class="stat">
-            <div class="icon">★</div>
-            <div class="num">4,200+</div>
-            <div class="label">Loved by thousands</div>
-          </div>
-          <div class="stat">
-            <div class="icon">🎬</div>
-            <div class="num">1,800+</div>
-            <div class="label">Viral AI creators</div>
-          </div>
-          <div class="stat">
-            <div class="icon">🔥</div>
-            <div class="num">97%</div>
-            <div class="label">Trending AI skill</div>
-          </div>
-          <div class="stat">
-            <div class="icon">📈</div>
-            <div class="num">320+</div>
-            <div class="label">Brands using AI content</div>
-          </div>
         </div>
       </div>
     </header>
@@ -1891,7 +1876,9 @@
         </div>
 
         <div class="testimonials-cta">
-          <a href="#pricing" class="btn btn-primary">Start creating with AI</a>
+          <a href="https://selar.com/365w51bydv" class="btn btn-primary"
+            >Claim Access now - <span class="strike">₦25,000</span> ₦9,999</a
+          >
         </div>
       </div>
     </section>
