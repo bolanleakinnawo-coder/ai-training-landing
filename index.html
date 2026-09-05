@@ -183,6 +183,16 @@
         gap: 56px;
         align-items: center;
       }
+      .hero-grid > div:first-child {
+        position: relative;
+        z-index: 2;
+        min-width: 0;
+      }
+      .hero-grid > .ba-card {
+        position: relative;
+        z-index: 1;
+        min-width: 0;
+      }
       @media (max-width: 900px) {
         .hero-grid {
           grid-template-columns: 1fr;
@@ -259,6 +269,10 @@
         box-shadow: var(--shadow);
         background: #111;
       }
+      .ba-card > img {
+        width: 100%;
+        height: auto;
+      }
       .ba-split {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -299,13 +313,9 @@
         background: var(--violet-2);
       }
       .ba-caption {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
         padding: 22px 18px 18px;
         text-align: center;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), transparent);
+        background: #111;
       }
       .ba-caption .headline {
         font-size: 19px;
@@ -319,10 +329,9 @@
         margin-top: 2px;
       }
       .ba-play {
-        position: absolute;
-        bottom: -20px;
-        left: 50%;
-        transform: translateX(-50%);
+        position: relative;
+        margin: 0 auto 18px;
+        width: fit-content;
         background: #fff;
         color: var(--ink);
         font-size: 13px;
@@ -447,6 +456,72 @@
         padding: 14px;
         max-width: 960px;
         margin: 0 auto;
+      }
+      .compare-photo > img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--radius-md);
+      }
+      .compare-carousel {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+      }
+      .compare-slides {
+        display: flex;
+        transition: transform 0.4s ease;
+      }
+      .compare-slide {
+        min-width: 100%;
+      }
+      .compare-slide img {
+        width: 100%;
+        height: auto;
+      }
+      .carousel-control {
+        position: absolute;
+        top: 50%;
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ink);
+        cursor: pointer;
+        font-size: 22px;
+        line-height: 1;
+        transform: translateY(-50%);
+        box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.35);
+        z-index: 1;
+      }
+      .carousel-control.prev {
+        left: 12px;
+      }
+      .carousel-control.next {
+        right: 12px;
+      }
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .carousel-dot {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: #d2cde5;
+        cursor: pointer;
+      }
+      .carousel-dot.active {
+        background: var(--violet);
+      }
+      @media (min-width: 901px) {
+        .compare-photo {
+          max-width: 820px;
+        }
       }
       .compare-photo .grid2 {
         display: grid;
@@ -663,6 +738,16 @@
         font-size: 13.5px;
         margin-bottom: 14px;
       }
+      .module-points {
+        margin: 0 0 14px;
+        padding-left: 18px;
+        color: var(--ink-soft);
+        font-size: 13.5px;
+        line-height: 1.55;
+      }
+      .module-points li + li {
+        margin-top: 5px;
+      }
       .module-card .what b {
         color: var(--ink);
       }
@@ -706,6 +791,13 @@
       .identity-photos {
         display: grid;
         grid-template-columns: 1fr 1fr;
+      }
+      .identity-single {
+        overflow: hidden;
+      }
+      .identity-single img {
+        width: 100%;
+        height: auto;
       }
       .identity-half {
         position: relative;
@@ -787,6 +879,84 @@
       .audience-card .name {
         font-size: 14px;
         font-weight: 700;
+      }
+
+      /* ============ TESTIMONIALS ============ */
+      .testimonials-section {
+        background: #fff;
+      }
+      .testimonials-intro {
+        max-width: 680px;
+        margin: 0 auto 44px;
+        text-align: center;
+      }
+      .testimonials-intro h2 {
+        font-size: clamp(28px, 3.8vw, 42px);
+        margin: 20px auto 14px;
+      }
+      .testimonials-intro p {
+        font-size: 17px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .testimonials-title {
+        text-align: center;
+        font-size: clamp(24px, 3vw, 34px);
+        margin-bottom: 26px;
+      }
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .testimonial-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 220px;
+        padding: 24px;
+        background: var(--paper-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        box-shadow: 0 14px 30px -24px rgba(30, 20, 70, 0.3);
+      }
+      .testimonial-card blockquote {
+        margin: 0;
+        color: var(--ink);
+        font-size: 15px;
+        line-height: 1.65;
+      }
+      .testimonial-card blockquote::before {
+        content: "“";
+        display: block;
+        color: var(--violet);
+        font-size: 38px;
+        font-weight: 800;
+        line-height: 0.8;
+        margin-bottom: 12px;
+      }
+      .testimonial-author {
+        margin-top: auto;
+        padding-top: 18px;
+        color: var(--violet);
+        font-size: 13px;
+        font-weight: 800;
+      }
+      .testimonials-cta {
+        text-align: center;
+        margin-top: 34px;
+      }
+      @media (max-width: 900px) {
+        .testimonials-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+        .testimonial-card {
+          min-height: 0;
+        }
       }
 
       .imagine h2 {
@@ -1264,14 +1434,7 @@
         </div>
 
         <div class="ba-card">
-          <div class="ba-split">
-            <div class="ba-half before">
-              <span class="ba-tag before">BEFORE</span>
-            </div>
-            <div class="ba-half after">
-              <span class="ba-tag after">AFTER</span>
-            </div>
-          </div>
+          <img src="1.jpeg" alt="Create stunning AI videos without a camera" />
           <div class="ba-caption">
             <div class="headline">AI TRANSFORMATION</div>
             <div
@@ -1337,22 +1500,47 @@
         </div>
 
         <div class="compare-photo">
-          <div class="grid2" style="position: relative">
-            <div class="half a">
-              <span
-                class="ba-tag before"
-                style="position: absolute; top: 10px; left: 10px"
-                >BEFORE</span
-              >
+          <div class="compare-carousel" aria-label="AI transformation examples">
+            <div class="compare-slides">
+              <div class="compare-slide">
+                <img
+                  src="2.jpeg"
+                  alt="Video call identity swap showing an original face and an AI transformation"
+                />
+              </div>
+              <div class="compare-slide">
+                <img
+                  src="3.jpeg"
+                  alt="Another AI face transformation example"
+                />
+              </div>
             </div>
-            <div class="half b">
-              <span
-                class="ba-tag after"
-                style="position: absolute; top: 10px; right: 10px"
-                >AFTER AI</span
-              >
-            </div>
-            <div class="compare-arrow">→</div>
+            <button
+              class="carousel-control prev"
+              type="button"
+              aria-label="Previous image"
+            >
+              ‹
+            </button>
+            <button
+              class="carousel-control next"
+              type="button"
+              aria-label="Next image"
+            >
+              ›
+            </button>
+          </div>
+          <div class="carousel-dots" aria-label="Choose image">
+            <button
+              class="carousel-dot active"
+              type="button"
+              aria-label="Show image 1"
+            ></button>
+            <button
+              class="carousel-dot"
+              type="button"
+              aria-label="Show image 2"
+            ></button>
           </div>
           <p class="compare-caption">
             Works for any identity — even a totally different look.
@@ -1444,56 +1632,6 @@
     </section>
 
     <!-- ============ DARK STATS ============ -->
-    <section class="dark-stats">
-      <div class="wrap">
-        <div class="section-head">
-          <span class="eyebrow">Why this skill is exploding</span>
-          <h2>
-            The internet rewards whoever looks
-            <span class="grad-cyan">impossible to ignore</span>
-          </h2>
-          <p>
-            AI-generated content is not a phase — it is the new baseline for
-            attention. Early movers are taking the reach.
-          </p>
-        </div>
-
-        <div class="dark-grid">
-          <div class="dark-card">
-            <div class="tag">AI content dominates</div>
-            <div class="num">71%</div>
-            <div class="bar"><span style="width: 71%"></span></div>
-            <div class="desc">
-              of top-performing social posts now use AI-generated visuals
-            </div>
-          </div>
-          <div class="dark-card">
-            <div class="tag">Viral reach</div>
-            <div class="num">12M+</div>
-            <div class="bar"><span style="width: 88%"></span></div>
-            <div class="desc">
-              average views on the biggest AI transformation videos
-            </div>
-          </div>
-          <div class="dark-card">
-            <div class="tag">Business adoption</div>
-            <div class="num">4x</div>
-            <div class="bar"><span style="width: 60%"></span></div>
-            <div class="desc">
-              cheaper ad creative production for businesses using AI
-            </div>
-          </div>
-          <div class="dark-card">
-            <div class="tag">Creators earning</div>
-            <div class="num">₦60K</div>
-            <div class="bar"><span style="width: 75%"></span></div>
-            <div class="desc">
-              monthly earnings reported by creators selling AI content
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ============ MODULES ============ -->
     <section id="curriculum">
@@ -1517,12 +1655,13 @@
               <div class="tag">MODULE 1</div>
             </div>
             <h3>AI Face Transformation Basics</h3>
-            <p class="what">
-              <b>What's inside:</b> The exact AI tools, settings and prompts
-              that produce clean, realistic faces — free and paid options.
-            </p>
+            <ul class="module-points">
+              <li>Tools and apps you need</li>
+              <li>How AI face transformation works</li>
+              <li>Setting up everything in minutes</li>
+            </ul>
             <span class="check-line"
-              >✓ You create your first believable transformation today.</span
+              >✓ Build your first transformation from scratch.</span
             >
           </div>
           <div class="module-card">
@@ -1530,13 +1669,14 @@
               <div class="dot">🔗</div>
               <div class="tag">MODULE 2</div>
             </div>
-            <h3>Face Transformation Workflow</h3>
-            <p class="what">
-              <b>What's inside:</b> A repeatable step-by-step process: photo
-              selection, angles, lighting fixes and consistency tricks.
-            </p>
+            <h3>Step-By-Step Face Swap Process</h3>
+            <ul class="module-points">
+              <li>How to transform into celebrities or any character</li>
+              <li>How to make transformations look realistic</li>
+              <li>Beginner to advanced editing tricks</li>
+            </ul>
             <span class="check-line"
-              >✓ You transform any face into anyone, on demand.</span
+              >✓ Transform any face into anyone with confidence.</span
             >
           </div>
           <div class="module-card">
@@ -1544,13 +1684,14 @@
               <div class="dot">🎥</div>
               <div class="tag">MODULE 3</div>
             </div>
-            <h3>Creating Viral Videos</h3>
-            <p class="what">
-              <b>What's inside:</b> Hooks, reveal timing, transitions, sound
-              choices and posting formats built for TikTok &amp; Reels.
-            </p>
+            <h3>Viral Content Creation Secrets</h3>
+            <ul class="module-points">
+              <li>How to create scroll-stopping TikTok videos</li>
+              <li>Trending transformation content styles</li>
+              <li>How to structure videos for engagement</li>
+            </ul>
             <span class="check-line"
-              >✓ You publish videos engineered to be rewatched and shared.</span
+              >✓ Create content people want to watch and share.</span
             >
           </div>
           <div class="module-card">
@@ -1558,13 +1699,14 @@
               <div class="dot">💲</div>
               <div class="tag">MODULE 4</div>
             </div>
-            <h3>Monetization Blueprint</h3>
-            <p class="what">
-              <b>What's inside:</b> Pricing, packaging, outreach scripts and the
-              offers businesses happily pay for.
-            </p>
+            <h3>Monetization Strategies</h3>
+            <ul class="module-points">
+              <li>How creators make money with AI content</li>
+              <li>How to attract clients &amp; brands</li>
+              <li>How to use this skill for your business marketing</li>
+            </ul>
             <span class="check-line"
-              >✓ You know exactly how to charge for this skill.</span
+              >✓ Turn your AI skills into income and opportunities.</span
             >
           </div>
           <div class="module-card">
@@ -1572,13 +1714,14 @@
               <div class="dot">🎁</div>
               <div class="tag">BONUS</div>
             </div>
-            <h3>Viral Growth Secrets</h3>
-            <p class="what">
-              <b>What's inside:</b> Posting cadence, trend-riding and the small
-              edits that decide whether a video flops or explodes.
-            </p>
+            <h3>Viral Growth Tips</h3>
+            <ul class="module-points">
+              <li>Content posting strategy</li>
+              <li>Hook &amp; attention secrets</li>
+              <li>How to increase shares and followers</li>
+            </ul>
             <span class="check-line"
-              >✓ You grow faster than accounts posting twice as much.</span
+              >✓ Grow your audience with a repeatable strategy.</span
             >
           </div>
         </div>
@@ -1608,87 +1751,36 @@
 
         <div class="identity-grid">
           <div class="identity-card">
-            <div class="identity-photos">
-              <div class="identity-half a">
-                <span class="identity-tag before">BEFORE</span>
-              </div>
-              <div class="identity-half b">
-                <span class="identity-tag after">AFTER AI</span>
-              </div>
+            <div class="identity-single">
+              <img
+                src="influencer.jpeg"
+                alt="AI identity swap for an influencer"
+              />
             </div>
             <div class="identity-info">
-              <div class="cat">Superheroes</div>
-              <p>Same wave, same room — new identity.</p>
+              <div class="cat">Influencers</div>
+              <p>Create standout influencer content with AI.</p>
             </div>
           </div>
           <div class="identity-card">
-            <div class="identity-photos">
-              <div class="identity-half a">
-                <span class="identity-tag before">BEFORE</span>
-              </div>
-              <div class="identity-half b">
-                <span class="identity-tag after">AFTER AI</span>
-              </div>
+            <div class="identity-single">
+              <img src="musician.jpeg" alt="AI identity swap for a musician" />
             </div>
             <div class="identity-info">
               <div class="cat">Musicians</div>
-              <p>Same singing take — superstar identity.</p>
+              <p>Turn your performance into a superstar moment.</p>
             </div>
           </div>
           <div class="identity-card">
-            <div class="identity-photos">
-              <div class="identity-half a">
-                <span class="identity-tag before">BEFORE</span>
-              </div>
-              <div class="identity-half b">
-                <span class="identity-tag after">AFTER AI</span>
-              </div>
+            <div class="identity-single">
+              <img
+                src="footbollerr.jpeg"
+                alt="AI identity swap for a footballer"
+              />
             </div>
             <div class="identity-info">
               <div class="cat">Footballers</div>
-              <p>Same celebration — stadium star.</p>
-            </div>
-          </div>
-          <div class="identity-card">
-            <div class="identity-photos">
-              <div class="identity-half a">
-                <span class="identity-tag before">BEFORE</span>
-              </div>
-              <div class="identity-half b">
-                <span class="identity-tag after">AFTER AI</span>
-              </div>
-            </div>
-            <div class="identity-info">
-              <div class="cat">Anime characters</div>
-              <p>Same peace sign — anime hero.</p>
-            </div>
-          </div>
-          <div class="identity-card">
-            <div class="identity-photos">
-              <div class="identity-half a">
-                <span class="identity-tag before">BEFORE</span>
-              </div>
-              <div class="identity-half b">
-                <span class="identity-tag after">AFTER AI</span>
-              </div>
-            </div>
-            <div class="identity-info">
-              <div class="cat">Game characters</div>
-              <p>Same pointing shot — game legend.</p>
-            </div>
-          </div>
-          <div class="identity-card">
-            <div class="identity-photos">
-              <div class="identity-half a">
-                <span class="identity-tag before">BEFORE</span>
-              </div>
-              <div class="identity-half b">
-                <span class="identity-tag after">AFTER AI</span>
-              </div>
-            </div>
-            <div class="identity-info">
-              <div class="cat">Business leaders</div>
-              <p>Same thumbs up — billionaire CEO.</p>
+              <p>Make every football moment look unforgettable.</p>
             </div>
           </div>
         </div>
@@ -1740,61 +1832,60 @@
             <div class="name">Complete Beginners</div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="imagine">
-          <span
-            class="eyebrow"
-            style="display: block; width: fit-content; margin: 0 auto 16px"
-            >Imagine this…</span
-          >
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="testimonials-section">
+      <div class="wrap">
+        <div class="testimonials-intro">
+          <span class="eyebrow">🌍 The future of content is AI</span>
           <h2>
-            You post one video. You wake up to
-            <span class="grad-text">notifications that won't stop.</span>
+            Will you just watch others go viral, or learn the skill and start
+            creating <span class="grad-text">next-level content</span>?
           </h2>
-          <p class="sub">
-            This is what happens the moment people see a transformation they
-            can't explain.
-          </p>
+        </div>
 
-          <div class="social-grid">
-            <div class="social-card">
-              <div class="social-head">
-                <div class="social-user">
-                  <span class="av"></span> @tobi.creates
-                </div>
-                <span class="trending">TRENDING</span>
-              </div>
-              <div class="social-photo"></div>
-              <div class="social-stats">
-                <span>♥ 184K</span><span>💬 9,412</span><span>↻ 22K</span
-                ><span>+7,860</span>
-              </div>
-            </div>
-            <div class="social-card">
-              <div class="social-head">
-                <div class="social-user">
-                  <span class="av"></span> @amaka.ai
-                </div>
-                <span class="trending">TRENDING</span>
-              </div>
-              <div class="social-photo two"></div>
-              <div class="social-stats">
-                <span>♥ 271K</span><span>💬 14,208</span><span>↻ 38K</span
-                ><span>+12,340</span>
-              </div>
-            </div>
-          </div>
+        <h3 class="testimonials-title">Join Thousands of Happy Customers</h3>
 
-          <div class="comment-row">
-            <span class="comment-chip">💬 "How did you do this?"</span>
-            <span class="comment-chip">💬 "Is this real?"</span>
-            <span class="comment-chip">💬 "Teach me."</span>
-            <span class="comment-chip">💬 "This is insane."</span>
-          </div>
-          <p class="enroll-note">3 people enrolled in the last hour</p>
-          <div class="imagine-cta">
-            <a href="#pricing" class="btn btn-primary">Join now — ₦9,999</a>
-          </div>
+        <div class="testimonials-grid">
+          <article class="testimonial-card">
+            <blockquote>
+              Brooo this AI face transformation training is insane! 😭🔥 I just
+              tried it and it worked.<br /><br />I paid ₦9,999 and I don’t
+              regret it at all. This is actually valuable.
+            </blockquote>
+            <div class="testimonial-author">David A.</div>
+          </article>
+          <article class="testimonial-card">
+            <blockquote>
+              This training changed my content style completely. My TikTok
+              engagement increased almost immediately after I started posting AI
+              transformation videos. Best digital skill I’ve learned this year.
+            </blockquote>
+            <div class="testimonial-author">Khadijah R.</div>
+          </article>
+          <article class="testimonial-card">
+            <blockquote>
+              I’m not tech-savvy at all, but the way this training is explained
+              made everything so easy. I followed the steps and transformed
+              myself into a celebrity on my first try. Clear, simple and
+              straight to the point.
+            </blockquote>
+            <div class="testimonial-author">Chijoke M.</div>
+          </article>
+          <article class="testimonial-card">
+            <blockquote>
+              I used this AI face transformation skill for my business content
+              and ads, and it instantly made my brand stand out. If you’re into
+              marketing or content creation, this is a must.
+            </blockquote>
+            <div class="testimonial-author">Mayowa O.</div>
+          </article>
+        </div>
+
+        <div class="testimonials-cta">
+          <a href="#pricing" class="btn btn-primary">Start creating with AI</a>
         </div>
       </div>
     </section>
@@ -1816,34 +1907,39 @@
 
         <div class="money-grid">
           <div class="money-card">
-            <div class="ic">💳</div>
-            <h3>Sell AI content creation</h3>
-            <p>Charge per video or per package for transformations.</p>
+            <div class="ic">🎭</div>
+            <h3>Avatar Videos</h3>
+            <p>Create engaging videos with an AI-powered avatar.</p>
+          </div>
+          <div class="money-card">
+            <div class="ic">📹</div>
+            <h3>Full Identity Swap for Audio and Video Calls</h3>
+            <p>Transform your identity during live audio and video calls.</p>
+          </div>
+          <div class="money-card">
+            <div class="ic">👄</div>
+            <h3>Lip Sync</h3>
+            <p>Make AI-generated voices and videos move naturally together.</p>
           </div>
           <div class="money-card">
             <div class="ic">📣</div>
-            <h3>Create business ads</h3>
-            <p>Ad creatives brands can't produce themselves.</p>
+            <h3>Create Business Ads</h3>
+            <p>Produce attention-grabbing ads for brands and businesses.</p>
           </div>
           <div class="money-card">
-            <div class="ic">🤝</div>
-            <h3>Offer freelance services</h3>
-            <p>Sell on WhatsApp, Instagram DMs or freelance sites.</p>
+            <div class="ic">💳</div>
+            <h3>Sell AI Content Creation</h3>
+            <p>Charge for AI videos, transformations, and content packages.</p>
           </div>
           <div class="money-card">
             <div class="ic">👤</div>
-            <h3>Grow personal brands</h3>
+            <h3>Grow Personal Brands</h3>
             <p>Become the go-to AI creator in your niche.</p>
           </div>
           <div class="money-card">
-            <div class="ic">🔥</div>
-            <h3>Build viral pages</h3>
-            <p>Faceless AI pages that grow fast and sell ad space.</p>
-          </div>
-          <div class="money-card">
-            <div class="ic">🔗</div>
-            <h3>Monetize social media</h3>
-            <p>Turn reach into brand deals and product sales.</p>
+            <div class="ic">🤝</div>
+            <h3>Offer Freelance Services</h3>
+            <p>Sell AI services through WhatsApp, DMs, and freelance sites.</p>
           </div>
         </div>
 
@@ -1957,7 +2053,7 @@
         <div class="faq-list">
           <div class="faq-item">
             <button class="faq-q">
-              How long do I have access? <span class="plus">+</span>
+              How do i get access to the training? <span class="plus">+</span>
             </button>
             <div class="faq-a">
               <p>
@@ -1984,8 +2080,8 @@
             </button>
             <div class="faq-a">
               <p>
-                No. The training covers free and paid tool options, and the core
-                workflow can be done without buying any paid software.
+                The training covers affordable and cheap tool options so you can
+                get started without spending a lot.
               </p>
             </div>
           </div>
@@ -2006,8 +2102,9 @@
             </button>
             <div class="faq-a">
               <p>
-                Yes. Module 4 is a full monetization blueprint covering pricing,
-                packaging and outreach scripts for selling this as a service.
+                Yes. A particular module is a full monetization blueprint
+                covering pricing, packaging and outreach scripts for selling
+                this as a service.
               </p>
             </div>
           </div>
@@ -2048,6 +2145,56 @@
     </div>
 
     <script>
+      // Compare image carousel
+      const carousel = document.querySelector(".compare-carousel");
+      if (carousel) {
+        const slides = carousel.querySelector(".compare-slides");
+        const dots = document.querySelectorAll(".carousel-dot");
+        let currentSlide = 0;
+        let carouselTimer;
+
+        function showSlide(index) {
+          currentSlide = (index + dots.length) % dots.length;
+          slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+          dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle("active", dotIndex === currentSlide);
+          });
+        }
+
+        function startCarousel() {
+          carouselTimer = setInterval(() => showSlide(currentSlide + 1), 5000);
+        }
+
+        function restartCarousel() {
+          clearInterval(carouselTimer);
+          startCarousel();
+        }
+
+        carousel.querySelector(".prev").addEventListener("click", () => {
+          showSlide(currentSlide - 1);
+          restartCarousel();
+        });
+        carousel.querySelector(".next").addEventListener("click", () => {
+          showSlide(currentSlide + 1);
+          restartCarousel();
+        });
+        dots.forEach((dot, dotIndex) => {
+          dot.addEventListener("click", () => {
+            showSlide(dotIndex);
+            restartCarousel();
+          });
+        });
+        carousel.addEventListener("mouseenter", () =>
+          clearInterval(carouselTimer),
+        );
+        carousel.addEventListener("mouseleave", startCarousel);
+        carousel.addEventListener("focusin", () =>
+          clearInterval(carouselTimer),
+        );
+        carousel.addEventListener("focusout", startCarousel);
+        startCarousel();
+      }
+
       // FAQ accordion
       document.querySelectorAll(".faq-item").forEach((item) => {
         const q = item.querySelector(".faq-q");
