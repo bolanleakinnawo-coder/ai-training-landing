@@ -1,0 +1,2117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1470959385054302");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1470959385054302&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Face Transformation Training</title>
+    <style>
+      :root {
+        --violet: #6d5bd0;
+        --violet-2: #8f7cf0;
+        --blue: #4fc3e8;
+        --pink: #e0679a;
+        --orange: #f0935a;
+        --green: #22c58a;
+        --ink: #171425;
+        --ink-soft: #5c5870;
+        --paper: #ffffff;
+        --paper-2: #faf9fd;
+        --line: #ece9f5;
+        --dark: #0d0b1a;
+        --dark-2: #151130;
+        --radius-lg: 22px;
+        --radius-md: 14px;
+        --radius-sm: 10px;
+        --shadow: 0 20px 45px -25px rgba(50, 30, 110, 0.35);
+        --maxw: 1120px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family:
+          "Sora",
+          Poppins,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: 64px; /* space for sticky footer */
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Sora", sans-serif;
+        line-height: 1.08;
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+      p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.6;
+      }
+      a {
+        color: inherit;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      section {
+        padding: 96px 0;
+      }
+      @media (max-width: 720px) {
+        section {
+          padding: 64px 0;
+        }
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--violet);
+        background: rgba(109, 91, 208, 0.09);
+        padding: 6px 14px;
+        border-radius: 99px;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        font-family: inherit;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 17px 30px;
+        border-radius: 99px;
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #22c58a, #1aa877);
+        color: #fff;
+        box-shadow: 0 16px 30px -12px rgba(34, 197, 138, 0.55);
+      }
+      .btn-primary:hover {
+        box-shadow: 0 20px 34px -10px rgba(34, 197, 138, 0.65);
+      }
+      .btn-ghost-dark {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      /* ============ HERO ============ */
+      .hero {
+        padding-top: 64px;
+        background:
+          radial-gradient(
+            700px 420px at 8% 8%,
+            rgba(143, 124, 240, 0.28),
+            transparent 60%
+          ),
+          radial-gradient(
+            650px 500px at 92% 20%,
+            rgba(79, 195, 232, 0.3),
+            transparent 60%
+          ),
+          #fff;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 56px;
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .hero h1 {
+        font-size: clamp(34px, 4.6vw, 54px);
+        margin: 20px 0 22px;
+      }
+      .grad-text {
+        background: linear-gradient(100deg, var(--violet-2), var(--pink));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero p.lede {
+        font-size: 17px;
+        max-width: 46ch;
+        margin-bottom: 30px;
+      }
+      .price-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 34px;
+      }
+      .price-cta small {
+        color: var(--ink-soft);
+        font-size: 13px;
+      }
+      .strike {
+        text-decoration: line-through;
+        opacity: 0.75;
+        margin-left: 6px;
+        font-weight: 400;
+      }
+
+      .pill-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        max-width: 480px;
+      }
+      .pill {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--paper-2);
+        border: 1px solid var(--line);
+        border-radius: 99px;
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .pill .dot {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        flex: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--violet-2), var(--blue));
+        color: #fff;
+        font-size: 14px;
+      }
+
+      /* before/after card */
+      .ba-card {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        background: #111;
+      }
+      .ba-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .ba-half {
+        position: relative;
+        aspect-ratio: 3/4;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        color: #fff;
+        font-weight: 700;
+        text-align: center;
+      }
+      .ba-half.before {
+        background: linear-gradient(160deg, #3a3550, #211d34);
+      }
+      .ba-half.after {
+        background: linear-gradient(160deg, #7b3fb0, #1c2a63);
+      }
+      .ba-tag {
+        position: absolute;
+        top: 14px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        padding: 5px 11px;
+        border-radius: 99px;
+        color: #fff;
+      }
+      .ba-tag.before {
+        left: 14px;
+        background: rgba(0, 0, 0, 0.55);
+      }
+      .ba-tag.after {
+        right: 14px;
+        background: var(--violet-2);
+      }
+      .ba-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 22px 18px 18px;
+        text-align: center;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.75), transparent);
+      }
+      .ba-caption .headline {
+        font-size: 19px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+      .ba-caption .sub {
+        font-size: 11px;
+        color: #c9c4e0;
+        letter-spacing: 0.08em;
+        margin-top: 2px;
+      }
+      .ba-play {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #fff;
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 700;
+        padding: 10px 18px;
+        border-radius: 99px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.3);
+      }
+      .ba-play .tri {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--orange);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 10px;
+      }
+
+      .toast {
+        position: fixed;
+        left: 20px;
+        bottom: 80px;
+        z-index: 40;
+        background: #fff;
+        border-radius: 99px;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 14px 30px -12px rgba(20, 10, 60, 0.3);
+        font-size: 13px;
+        font-weight: 600;
+        max-width: 260px;
+      }
+      .toast .ring {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        flex: none;
+        background: rgba(34, 197, 138, 0.15);
+        color: var(--green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+      }
+      @media (max-width: 640px) {
+        .toast {
+          display: none;
+        }
+      }
+
+      /* ============ STATS BAR ============ */
+      .stats-bar {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        margin: -46px auto 0;
+        max-width: 1040px;
+        position: relative;
+        z-index: 5;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 30px 10px;
+      }
+      @media (max-width: 720px) {
+        .stats-bar {
+          grid-template-columns: 1fr 1fr;
+          row-gap: 24px;
+        }
+      }
+      .stat {
+        text-align: center;
+        padding: 0 10px;
+      }
+      .stat .icon {
+        font-size: 20px;
+        color: var(--orange);
+      }
+      .stat .num {
+        font-size: 28px;
+        font-weight: 800;
+        margin: 4px 0 2px;
+      }
+      .stat .label {
+        font-size: 11.5px;
+        color: var(--ink-soft);
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      /* ============ SPLIT COMPARE SECTION ============ */
+      .compare-section {
+        background: linear-gradient(160deg, #f3f0fd, #eef8fb);
+      }
+      .section-head {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto 44px;
+      }
+      .section-head .eyebrow {
+        margin-bottom: 16px;
+      }
+      .section-head h2 {
+        font-size: clamp(28px, 3.6vw, 40px);
+        margin-bottom: 16px;
+      }
+      .section-head p {
+        font-size: 16px;
+      }
+
+      .compare-photo {
+        background: #fff;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        padding: 14px;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .compare-photo .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .compare-photo .half {
+        position: relative;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        aspect-ratio: 4/3.4;
+      }
+      .compare-photo .half.a {
+        background: linear-gradient(160deg, #c9b79a, #8d7458);
+      }
+      .compare-photo .half.b {
+        background: linear-gradient(160deg, #e0a86a, #5a3d8f);
+      }
+      .compare-arrow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--violet);
+        box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.25);
+        z-index: 2;
+        font-weight: 700;
+      }
+      .compare-caption {
+        text-align: center;
+        font-size: 14px;
+        color: var(--ink-soft);
+        margin-top: 16px;
+      }
+      .compare-cta {
+        text-align: center;
+        margin-top: 32px;
+      }
+
+      /* ============ BENEFITS GRID ============ */
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 900px) {
+        .benefits-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 520px) {
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .benefit-card {
+        background: var(--paper-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 26px 22px;
+      }
+      .benefit-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 19px;
+        color: #fff;
+        background: linear-gradient(135deg, var(--violet-2), var(--blue));
+      }
+      .benefit-card h3 {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+      .benefit-card p {
+        font-size: 14px;
+      }
+
+      /* ============ DARK STATS ============ */
+      .dark-stats {
+        background:
+          radial-gradient(900px 500px at 15% 0%, #2a1f55, transparent 60%),
+          radial-gradient(900px 600px at 100% 100%, #123249, transparent 55%),
+          var(--dark);
+        color: #fff;
+      }
+      .dark-stats .section-head h2 {
+        color: #fff;
+      }
+      .dark-stats .section-head p {
+        color: #b8b3d4;
+      }
+      .dark-stats .eyebrow {
+        background: rgba(79, 195, 232, 0.12);
+        color: var(--blue);
+      }
+      .grad-cyan {
+        background: linear-gradient(100deg, var(--violet-2), var(--blue));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .dark-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        margin-top: 40px;
+      }
+      @media (max-width: 900px) {
+        .dark-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .dark-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius-md);
+        padding: 24px;
+      }
+      .dark-card .tag {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        color: var(--blue);
+        font-weight: 700;
+      }
+      .dark-card .num {
+        font-size: 32px;
+        font-weight: 800;
+        margin: 10px 0 12px;
+      }
+      .bar {
+        height: 5px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        margin-bottom: 14px;
+      }
+      .bar span {
+        display: block;
+        height: 100%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, var(--violet-2), var(--blue));
+      }
+      .dark-card .desc {
+        font-size: 13px;
+        color: #a7a2c6;
+      }
+
+      /* ============ MODULES ============ */
+      .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 900px) {
+        .modules-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .modules-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .module-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 24px;
+        box-shadow: 0 14px 30px -22px rgba(30, 20, 70, 0.25);
+      }
+      .module-tophead {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .module-tophead .dot {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        flex: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 15px;
+        background: linear-gradient(135deg, var(--violet-2), var(--blue));
+      }
+      .module-tophead.bonus .dot {
+        background: linear-gradient(135deg, var(--orange), var(--pink));
+      }
+      .module-tophead .tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: var(--violet);
+      }
+      .module-card h3 {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+      .module-card .what {
+        font-size: 13.5px;
+        margin-bottom: 14px;
+      }
+      .module-card .what b {
+        color: var(--ink);
+      }
+      .check-line {
+        font-size: 13px;
+        font-weight: 600;
+        background: rgba(34, 197, 138, 0.1);
+        color: #12734f;
+        padding: 8px 12px;
+        border-radius: 10px;
+        display: inline-block;
+      }
+      .modules-cta {
+        text-align: center;
+        margin-top: 34px;
+      }
+
+      /* ============ IDENTITIES SHOWCASE ============ */
+      .identity-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 900px) {
+        .identity-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .identity-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .identity-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 14px 30px -22px rgba(30, 20, 70, 0.25);
+      }
+      .identity-photos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .identity-half {
+        position: relative;
+        aspect-ratio: 1/1.05;
+      }
+      .identity-half.b {
+        background: linear-gradient(160deg, #8f6fd8, #3a2860);
+      }
+      .identity-half.a {
+        background: linear-gradient(160deg, #cbb999, #7f6a52);
+      }
+      .identity-tag {
+        position: absolute;
+        top: 8px;
+        font-size: 9.5px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        padding: 3px 8px;
+        border-radius: 99px;
+        color: #fff;
+      }
+      .identity-tag.before {
+        left: 8px;
+        background: rgba(0, 0, 0, 0.55);
+      }
+      .identity-tag.after {
+        right: 8px;
+        background: var(--violet-2);
+      }
+      .identity-info {
+        padding: 16px 18px 20px;
+      }
+      .identity-info .cat {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        color: var(--violet);
+        text-transform: uppercase;
+      }
+      .identity-info p {
+        font-size: 13.5px;
+        margin-top: 4px;
+      }
+
+      /* ============ AUDIENCE ============ */
+      .audience-section {
+        background: linear-gradient(160deg, #f6f2fd, #effaf9);
+      }
+      .audience-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 70px;
+      }
+      @media (max-width: 800px) {
+        .audience-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .audience-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 24px 16px;
+        text-align: center;
+      }
+      .audience-card .ic {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 12px;
+        border-radius: 12px;
+        background: rgba(109, 91, 208, 0.1);
+        color: var(--violet);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+      .audience-card .name {
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .imagine h2 {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 16px;
+        font-size: clamp(26px, 3.6vw, 38px);
+      }
+      .imagine p.sub {
+        text-align: center;
+        max-width: 520px;
+        margin: 0 auto 40px;
+      }
+
+      .social-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      @media (max-width: 700px) {
+        .social-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .social-card {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 14px 30px -22px rgba(30, 20, 70, 0.25);
+      }
+      .social-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+      }
+      .social-user {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13.5px;
+        font-weight: 700;
+      }
+      .social-user .av {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--pink), var(--orange));
+      }
+      .trending {
+        font-size: 10.5px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        color: var(--orange);
+        background: rgba(240, 147, 90, 0.13);
+        padding: 4px 9px;
+        border-radius: 99px;
+      }
+      .social-photo {
+        aspect-ratio: 16/11;
+        background: linear-gradient(160deg, #7b3fb0, #1c2a63);
+      }
+      .social-photo.two {
+        background: linear-gradient(160deg, #c0398f, #20204e);
+      }
+      .social-stats {
+        display: flex;
+        gap: 22px;
+        padding: 14px 16px;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--ink-soft);
+      }
+      .social-stats span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .comment-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin: 26px 0 8px;
+      }
+      .comment-chip {
+        font-size: 13px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 99px;
+        padding: 9px 15px;
+        color: var(--ink-soft);
+        font-weight: 600;
+      }
+      .enroll-note {
+        text-align: center;
+        font-size: 13px;
+        color: var(--ink-soft);
+        margin-bottom: 24px;
+      }
+      .imagine-cta {
+        text-align: center;
+      }
+
+      /* ============ MONETIZATION ============ */
+      .money-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-bottom: 56px;
+      }
+      @media (max-width: 900px) {
+        .money-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .money-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .money-card {
+        background: var(--paper-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 24px;
+      }
+      .money-card .ic {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        margin-bottom: 14px;
+        background: linear-gradient(135deg, var(--green), #0f9d69);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+      }
+      .money-card h3 {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+      .money-card p {
+        font-size: 13.5px;
+      }
+
+      .objections h3 {
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 24px;
+      }
+      .obj-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+      @media (max-width: 800px) {
+        .obj-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .obj-card {
+        border-left: 3px solid var(--orange);
+        background: #fff;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        padding: 16px 18px;
+        box-shadow: 0 10px 24px -20px rgba(30, 20, 70, 0.3);
+      }
+      .obj-card .q {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+      .obj-card p {
+        font-size: 13px;
+      }
+      .money-cta {
+        text-align: center;
+      }
+
+      /* ============ PRICING ============ */
+      .pricing-section {
+        background: linear-gradient(160deg, #f3f0fd, #eef8fb);
+      }
+      .pricing-card {
+        max-width: 560px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        padding: 40px;
+      }
+      @media (max-width: 600px) {
+        .pricing-card {
+          padding: 28px 22px;
+        }
+      }
+      .badge-off {
+        display: inline-block;
+        font-size: 11.5px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: #b5580f;
+        background: rgba(240, 147, 90, 0.16);
+        padding: 6px 14px;
+        border-radius: 99px;
+        margin-bottom: 16px;
+      }
+      .price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .price-row .now {
+        font-size: 44px;
+        font-weight: 800;
+      }
+      .price-row .was {
+        font-size: 20px;
+        color: var(--ink-soft);
+        text-decoration: line-through;
+      }
+      .save-line {
+        color: var(--green);
+        font-weight: 700;
+        font-size: 14px;
+        margin-top: 8px;
+      }
+      .feature-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 20px;
+        margin: 28px 0;
+        list-style: none;
+        padding: 0;
+      }
+      @media (max-width: 480px) {
+        .feature-list {
+          grid-template-columns: 1fr;
+        }
+      }
+      .feature-list li {
+        display: flex;
+        gap: 8px;
+        font-size: 13.5px;
+        font-weight: 600;
+        align-items: flex-start;
+      }
+      .feature-list li .ck {
+        color: var(--green);
+        font-weight: 800;
+      }
+      .timer-row {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin: 26px 0;
+      }
+      .timer-box {
+        background: var(--ink);
+        color: #fff;
+        border-radius: 12px;
+        padding: 12px 16px;
+        text-align: center;
+        min-width: 60px;
+      }
+      .timer-box .n {
+        font-size: 22px;
+        font-weight: 800;
+      }
+      .timer-box .l {
+        font-size: 9.5px;
+        letter-spacing: 0.06em;
+        color: #b8b3d4;
+        text-transform: uppercase;
+      }
+      .pricing-card .btn {
+        width: 100%;
+      }
+      .fine {
+        text-align: center;
+        font-size: 12.5px;
+        color: var(--ink-soft);
+        margin-top: 12px;
+      }
+      .warn-list {
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .warn-list div {
+        display: flex;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--ink-soft);
+        align-items: flex-start;
+      }
+
+      /* ============ FAQ ============ */
+      .faq-list {
+        max-width: 720px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .faq-item {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: #fff;
+        overflow: hidden;
+      }
+      .faq-q {
+        width: 100%;
+        background: none;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 20px;
+        font-family: inherit;
+        font-size: 15.5px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .faq-q .plus {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: var(--paper-2);
+        flex: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: var(--violet);
+        transition: transform 0.25s ease;
+      }
+      .faq-item.open .plus {
+        transform: rotate(45deg);
+      }
+      .faq-a {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .faq-a p {
+        padding: 0 20px 20px;
+        font-size: 14.5px;
+      }
+
+      /* ============ FINAL CTA ============ */
+      .final-cta {
+        background:
+          radial-gradient(900px 500px at 20% 10%, #2a1f55, transparent 60%),
+          radial-gradient(900px 600px at 90% 100%, #123249, transparent 55%),
+          var(--dark);
+        color: #fff;
+        text-align: center;
+      }
+      .final-cta .eyebrow {
+        background: rgba(224, 103, 154, 0.15);
+        color: #f2a9c4;
+      }
+      .final-cta h2 {
+        font-size: clamp(28px, 4.2vw, 44px);
+        margin: 20px auto 14px;
+        max-width: 680px;
+      }
+      .final-cta p.sub {
+        color: #b8b3d4;
+        font-size: 17px;
+        max-width: 520px;
+        margin: 0 auto 34px;
+      }
+
+      /* ============ FOOTER ============ */
+      footer {
+        background: var(--dark);
+        color: #8f89ac;
+        padding: 40px 0;
+        text-align: center;
+        font-size: 13px;
+      }
+
+      /* ============ STICKY FOOTER ============ */
+      .sticky-footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 50;
+        background: #fff;
+        border-top: 1px solid var(--line);
+        box-shadow: 0 -10px 30px -18px rgba(20, 10, 60, 0.25);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .sticky-footer .info b {
+        display: block;
+        font-size: 14px;
+      }
+      .sticky-footer .info span {
+        font-size: 12.5px;
+        color: var(--ink-soft);
+      }
+      .sticky-footer .btn {
+        padding: 12px 22px;
+        font-size: 14px;
+        flex: none;
+      }
+      @media (max-width: 480px) {
+        .sticky-footer .info span {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">✨ The hottest AI skill of 2026</span>
+          <h1>
+            Learn how to transform yourself into
+            <span class="grad-text">anyone</span> using AI — even
+            <span class="grad-text">celebrities!</span>
+          </h1>
+          <p class="lede">
+            Create viral TikTok &amp; Instagram videos, grab attention online,
+            promote your business, and even make money using one of today's
+            hottest AI skills.
+          </p>
+
+          <div class="price-cta">
+            <a href="#pricing" class="btn btn-primary"
+              >Join the training for
+              <span class="strike">₦25,000</span> ₦9,999</a
+            >
+            <small
+              >Instant access · Lifetime updates · Works on any phone</small
+            >
+          </div>
+
+          <div class="pill-grid">
+            <div class="pill">
+              <span class="dot">👍</span> Beginner friendly
+            </div>
+            <div class="pill">
+              <span class="dot">⚡</span> No editing needed
+            </div>
+            <div class="pill">
+              <span class="dot">📱</span> Phone &amp; laptop
+            </div>
+            <div class="pill">
+              <span class="dot">💰</span> Monetize this skill
+            </div>
+          </div>
+        </div>
+
+        <div class="ba-card">
+          <div class="ba-split">
+            <div class="ba-half before">
+              <span class="ba-tag before">BEFORE</span>
+            </div>
+            <div class="ba-half after">
+              <span class="ba-tag after">AFTER</span>
+            </div>
+          </div>
+          <div class="ba-caption">
+            <div class="headline">AI TRANSFORMATION</div>
+            <div
+              class="sub"
+              style="
+                font-size: 22px;
+                font-weight: 800;
+                letter-spacing: 0.04em;
+                color: #fff;
+              "
+            >
+              HOLLYWOOD UPGRADE
+            </div>
+            <div class="sub">FROM ORDINARY TO EXTRAORDINARY</div>
+          </div>
+          <div class="ba-play">
+            <span class="tri">▶</span> Watch the magic happen
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <div class="stats-bar">
+          <div class="stat">
+            <div class="icon">★</div>
+            <div class="num">4,200+</div>
+            <div class="label">Loved by thousands</div>
+          </div>
+          <div class="stat">
+            <div class="icon">🎬</div>
+            <div class="num">1,800+</div>
+            <div class="label">Viral AI creators</div>
+          </div>
+          <div class="stat">
+            <div class="icon">🔥</div>
+            <div class="num">97%</div>
+            <div class="label">Trending AI skill</div>
+          </div>
+          <div class="stat">
+            <div class="icon">📈</div>
+            <div class="num">320+</div>
+            <div class="label">Brands using AI content</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="toast">
+      <span class="ring">🔔</span> A creator from Abuja just got access
+    </div>
+
+    <!-- ============ COMPARE SECTION ============ -->
+    <section class="compare-section" id="demo">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Watch the magic happen</span>
+          <h2>Your real face on the left. Anyone you want on the right.</h2>
+          <p>
+            This is the exact skill you'll learn: keep your video, your voice
+            and your movement — but change your face and identity into anyone.
+            It even works live on audio and video calls.
+          </p>
+        </div>
+
+        <div class="compare-photo">
+          <div class="grid2" style="position: relative">
+            <div class="half a">
+              <span
+                class="ba-tag before"
+                style="position: absolute; top: 10px; left: 10px"
+                >BEFORE</span
+              >
+            </div>
+            <div class="half b">
+              <span
+                class="ba-tag after"
+                style="position: absolute; top: 10px; right: 10px"
+                >AFTER AI</span
+              >
+            </div>
+            <div class="compare-arrow">→</div>
+          </div>
+          <p class="compare-caption">
+            Works for any identity — even a totally different look.
+          </p>
+        </div>
+
+        <div class="compare-cta">
+          <a href="#pricing" class="btn btn-primary"
+            >Join the training for <span class="strike">₦25,000</span> ₦9,999</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BENEFITS ============ -->
+    <section id="benefits">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">The benefits</span>
+          <h2>
+            Why everyone is learning
+            <span class="grad-text">AI face transformations</span>
+          </h2>
+          <p>
+            One skill. Eight different ways it changes how people see you
+            online.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">✨</div>
+            <h3>Transform into celebrities</h3>
+            <p>
+              Turn one photo into a movie-star, musician or superhero version of
+              you.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🎬</div>
+            <h3>Create crazy viral TikToks</h3>
+            <p>
+              The exact video formats that pull millions of views right now.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">✋</div>
+            <h3>Stop the scroll on Instagram</h3>
+            <p>Reels people rewatch, save and send to their friends.</p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📣</div>
+            <h3>Produce attention-grabbing ads</h3>
+            <p>
+              Ad creatives that get clicks for a fraction of the usual cost.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">💼</div>
+            <h3>Offer AI content services</h3>
+            <p>
+              Charge brands and creators for transformations you can do in
+              minutes.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">👥</div>
+            <h3>Grow your followers faster</h3>
+            <p>
+              Novelty plus consistency is the fastest growth combo on any
+              platform.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">👑</div>
+            <h3>Stand out online</h3>
+            <p>
+              Look like a premium brand instead of one more talking-head
+              account.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🎓</div>
+            <h3>Learn today's hottest AI skill</h3>
+            <p>A skill that keeps paying long after the trend cools down.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DARK STATS ============ -->
+    <section class="dark-stats">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Why this skill is exploding</span>
+          <h2>
+            The internet rewards whoever looks
+            <span class="grad-cyan">impossible to ignore</span>
+          </h2>
+          <p>
+            AI-generated content is not a phase — it is the new baseline for
+            attention. Early movers are taking the reach.
+          </p>
+        </div>
+
+        <div class="dark-grid">
+          <div class="dark-card">
+            <div class="tag">AI content dominates</div>
+            <div class="num">71%</div>
+            <div class="bar"><span style="width: 71%"></span></div>
+            <div class="desc">
+              of top-performing social posts now use AI-generated visuals
+            </div>
+          </div>
+          <div class="dark-card">
+            <div class="tag">Viral reach</div>
+            <div class="num">12M+</div>
+            <div class="bar"><span style="width: 88%"></span></div>
+            <div class="desc">
+              average views on the biggest AI transformation videos
+            </div>
+          </div>
+          <div class="dark-card">
+            <div class="tag">Business adoption</div>
+            <div class="num">4x</div>
+            <div class="bar"><span style="width: 60%"></span></div>
+            <div class="desc">
+              cheaper ad creative production for businesses using AI
+            </div>
+          </div>
+          <div class="dark-card">
+            <div class="tag">Creators earning</div>
+            <div class="num">₦60K</div>
+            <div class="bar"><span style="width: 75%"></span></div>
+            <div class="desc">
+              monthly earnings reported by creators selling AI content
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MODULES ============ -->
+    <section id="curriculum">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Inside the training</span>
+          <h2>
+            Introducing the
+            <span class="grad-text">AI Face Transformation Training</span>
+          </h2>
+          <p>
+            Short, practical lessons you can follow with just your phone — no
+            jargon, no expensive software.
+          </p>
+        </div>
+
+        <div class="modules-grid">
+          <div class="module-card">
+            <div class="module-tophead">
+              <div class="dot">✨</div>
+              <div class="tag">MODULE 1</div>
+            </div>
+            <h3>AI Face Transformation Basics</h3>
+            <p class="what">
+              <b>What's inside:</b> The exact AI tools, settings and prompts
+              that produce clean, realistic faces — free and paid options.
+            </p>
+            <span class="check-line"
+              >✓ You create your first believable transformation today.</span
+            >
+          </div>
+          <div class="module-card">
+            <div class="module-tophead">
+              <div class="dot">🔗</div>
+              <div class="tag">MODULE 2</div>
+            </div>
+            <h3>Face Transformation Workflow</h3>
+            <p class="what">
+              <b>What's inside:</b> A repeatable step-by-step process: photo
+              selection, angles, lighting fixes and consistency tricks.
+            </p>
+            <span class="check-line"
+              >✓ You transform any face into anyone, on demand.</span
+            >
+          </div>
+          <div class="module-card">
+            <div class="module-tophead">
+              <div class="dot">🎥</div>
+              <div class="tag">MODULE 3</div>
+            </div>
+            <h3>Creating Viral Videos</h3>
+            <p class="what">
+              <b>What's inside:</b> Hooks, reveal timing, transitions, sound
+              choices and posting formats built for TikTok &amp; Reels.
+            </p>
+            <span class="check-line"
+              >✓ You publish videos engineered to be rewatched and shared.</span
+            >
+          </div>
+          <div class="module-card">
+            <div class="module-tophead">
+              <div class="dot">💲</div>
+              <div class="tag">MODULE 4</div>
+            </div>
+            <h3>Monetization Blueprint</h3>
+            <p class="what">
+              <b>What's inside:</b> Pricing, packaging, outreach scripts and the
+              offers businesses happily pay for.
+            </p>
+            <span class="check-line"
+              >✓ You know exactly how to charge for this skill.</span
+            >
+          </div>
+          <div class="module-card">
+            <div class="module-tophead bonus">
+              <div class="dot">🎁</div>
+              <div class="tag">BONUS</div>
+            </div>
+            <h3>Viral Growth Secrets</h3>
+            <p class="what">
+              <b>What's inside:</b> Posting cadence, trend-riding and the small
+              edits that decide whether a video flops or explodes.
+            </p>
+            <span class="check-line"
+              >✓ You grow faster than accounts posting twice as much.</span
+            >
+          </div>
+        </div>
+
+        <div class="modules-cta">
+          <a href="#pricing" class="btn btn-primary"
+            >Join the training for ₦9,999</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IDENTITY SHOWCASE ============ -->
+    <section style="background: var(--paper-2)">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Visual showcase</span>
+          <h2>
+            One face. <span class="grad-text">Unlimited identities.</span>
+          </h2>
+          <p>
+            Same person, same pose, same action — only the identity changes.
+            Movie stars, musicians, footballers, anime characters, game legends
+            and business icons.
+          </p>
+        </div>
+
+        <div class="identity-grid">
+          <div class="identity-card">
+            <div class="identity-photos">
+              <div class="identity-half a">
+                <span class="identity-tag before">BEFORE</span>
+              </div>
+              <div class="identity-half b">
+                <span class="identity-tag after">AFTER AI</span>
+              </div>
+            </div>
+            <div class="identity-info">
+              <div class="cat">Superheroes</div>
+              <p>Same wave, same room — new identity.</p>
+            </div>
+          </div>
+          <div class="identity-card">
+            <div class="identity-photos">
+              <div class="identity-half a">
+                <span class="identity-tag before">BEFORE</span>
+              </div>
+              <div class="identity-half b">
+                <span class="identity-tag after">AFTER AI</span>
+              </div>
+            </div>
+            <div class="identity-info">
+              <div class="cat">Musicians</div>
+              <p>Same singing take — superstar identity.</p>
+            </div>
+          </div>
+          <div class="identity-card">
+            <div class="identity-photos">
+              <div class="identity-half a">
+                <span class="identity-tag before">BEFORE</span>
+              </div>
+              <div class="identity-half b">
+                <span class="identity-tag after">AFTER AI</span>
+              </div>
+            </div>
+            <div class="identity-info">
+              <div class="cat">Footballers</div>
+              <p>Same celebration — stadium star.</p>
+            </div>
+          </div>
+          <div class="identity-card">
+            <div class="identity-photos">
+              <div class="identity-half a">
+                <span class="identity-tag before">BEFORE</span>
+              </div>
+              <div class="identity-half b">
+                <span class="identity-tag after">AFTER AI</span>
+              </div>
+            </div>
+            <div class="identity-info">
+              <div class="cat">Anime characters</div>
+              <p>Same peace sign — anime hero.</p>
+            </div>
+          </div>
+          <div class="identity-card">
+            <div class="identity-photos">
+              <div class="identity-half a">
+                <span class="identity-tag before">BEFORE</span>
+              </div>
+              <div class="identity-half b">
+                <span class="identity-tag after">AFTER AI</span>
+              </div>
+            </div>
+            <div class="identity-info">
+              <div class="cat">Game characters</div>
+              <p>Same pointing shot — game legend.</p>
+            </div>
+          </div>
+          <div class="identity-card">
+            <div class="identity-photos">
+              <div class="identity-half a">
+                <span class="identity-tag before">BEFORE</span>
+              </div>
+              <div class="identity-half b">
+                <span class="identity-tag after">AFTER AI</span>
+              </div>
+            </div>
+            <div class="identity-info">
+              <div class="cat">Business leaders</div>
+              <p>Same thumbs up — billionaire CEO.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AUDIENCE + IMAGINE ============ -->
+    <section class="audience-section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Who is this for?</span>
+          <h2>
+            If you post online, this was built
+            <span class="grad-text">for you</span>
+          </h2>
+        </div>
+
+        <div class="audience-grid">
+          <div class="audience-card">
+            <div class="ic">📷</div>
+            <div class="name">Content Creators</div>
+          </div>
+          <div class="audience-card">
+            <div class="ic">🎵</div>
+            <div class="name">TikTok Users</div>
+          </div>
+          <div class="audience-card">
+            <div class="ic">📸</div>
+            <div class="name">Instagram Users</div>
+          </div>
+          <div class="audience-card">
+            <div class="ic">🚀</div>
+            <div class="name">Entrepreneurs</div>
+          </div>
+          <div class="audience-card">
+            <div class="ic">💻</div>
+            <div class="name">Freelancers</div>
+          </div>
+          <div class="audience-card">
+            <div class="ic">🏬</div>
+            <div class="name">Business Owners</div>
+          </div>
+          <div class="audience-card">
+            <div class="ic">📊</div>
+            <div class="name">Digital Marketers</div>
+          </div>
+          <div class="audience-card">
+            <div class="ic">🎓</div>
+            <div class="name">Complete Beginners</div>
+          </div>
+        </div>
+
+        <div class="imagine">
+          <span
+            class="eyebrow"
+            style="display: block; width: fit-content; margin: 0 auto 16px"
+            >Imagine this…</span
+          >
+          <h2>
+            You post one video. You wake up to
+            <span class="grad-text">notifications that won't stop.</span>
+          </h2>
+          <p class="sub">
+            This is what happens the moment people see a transformation they
+            can't explain.
+          </p>
+
+          <div class="social-grid">
+            <div class="social-card">
+              <div class="social-head">
+                <div class="social-user">
+                  <span class="av"></span> @tobi.creates
+                </div>
+                <span class="trending">TRENDING</span>
+              </div>
+              <div class="social-photo"></div>
+              <div class="social-stats">
+                <span>♥ 184K</span><span>💬 9,412</span><span>↻ 22K</span
+                ><span>+7,860</span>
+              </div>
+            </div>
+            <div class="social-card">
+              <div class="social-head">
+                <div class="social-user">
+                  <span class="av"></span> @amaka.ai
+                </div>
+                <span class="trending">TRENDING</span>
+              </div>
+              <div class="social-photo two"></div>
+              <div class="social-stats">
+                <span>♥ 271K</span><span>💬 14,208</span><span>↻ 38K</span
+                ><span>+12,340</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="comment-row">
+            <span class="comment-chip">💬 "How did you do this?"</span>
+            <span class="comment-chip">💬 "Is this real?"</span>
+            <span class="comment-chip">💬 "Teach me."</span>
+            <span class="comment-chip">💬 "This is insane."</span>
+          </div>
+          <p class="enroll-note">3 people enrolled in the last hour</p>
+          <div class="imagine-cta">
+            <a href="#pricing" class="btn btn-primary">Join now — ₦9,999</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MONETIZATION ============ -->
+    <section id="monetization">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Monetization</span>
+          <h2>
+            This skill can open
+            <span class="grad-text">new income opportunities</span>
+          </h2>
+          <p>
+            Attention is currency. This training teaches you how to create it —
+            and how to charge for it.
+          </p>
+        </div>
+
+        <div class="money-grid">
+          <div class="money-card">
+            <div class="ic">💳</div>
+            <h3>Sell AI content creation</h3>
+            <p>Charge per video or per package for transformations.</p>
+          </div>
+          <div class="money-card">
+            <div class="ic">📣</div>
+            <h3>Create business ads</h3>
+            <p>Ad creatives brands can't produce themselves.</p>
+          </div>
+          <div class="money-card">
+            <div class="ic">🤝</div>
+            <h3>Offer freelance services</h3>
+            <p>Sell on WhatsApp, Instagram DMs or freelance sites.</p>
+          </div>
+          <div class="money-card">
+            <div class="ic">👤</div>
+            <h3>Grow personal brands</h3>
+            <p>Become the go-to AI creator in your niche.</p>
+          </div>
+          <div class="money-card">
+            <div class="ic">🔥</div>
+            <h3>Build viral pages</h3>
+            <p>Faceless AI pages that grow fast and sell ad space.</p>
+          </div>
+          <div class="money-card">
+            <div class="ic">🔗</div>
+            <h3>Monetize social media</h3>
+            <p>Turn reach into brand deals and product sales.</p>
+          </div>
+        </div>
+
+        <div class="objections">
+          <h3>30-second objection busters</h3>
+          <div class="obj-grid">
+            <div class="obj-card">
+              <div class="q">⚠️ Not good with technology?</div>
+              <p>
+                Every step is shown on screen. If you can send a WhatsApp voice
+                note, you can do this.
+              </p>
+            </div>
+            <div class="obj-card">
+              <div class="q">📱 Only have a phone?</div>
+              <p>
+                The whole workflow was built phone-first. No laptop required.
+              </p>
+            </div>
+            <div class="obj-card">
+              <div class="q">🎬 No editing experience?</div>
+              <p>
+                Zero needed. You follow the workflow and copy the exact
+                settings.
+              </p>
+            </div>
+          </div>
+          <div class="money-cta">
+            <a href="#pricing" class="btn btn-primary"
+              >Join the training for ₦9,999</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="pricing-section" id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">What's included</span>
+          <h2>
+            Everything you need for
+            <span class="grad-text">less than a night out</span>
+          </h2>
+        </div>
+
+        <div class="pricing-card">
+          <span class="badge-off">Today only · 60% off</span>
+          <div class="price-row">
+            <span class="now">₦9,999</span><span class="was">₦25,000</span>
+          </div>
+          <p class="save-line">
+            You save ₦15,001 — one-time payment, lifetime access.
+          </p>
+
+          <ul class="feature-list">
+            <li>
+              <span class="ck">✓</span> Full AI Face Transformation Training
+            </li>
+            <li>
+              <span class="ck">✓</span> Step-by-step phone &amp; laptop
+              tutorials
+            </li>
+            <li><span class="ck">✓</span> Monetization Blueprint</li>
+            <li><span class="ck">✓</span> Viral Strategy playbook</li>
+            <li><span class="ck">✓</span> Bonus: Viral Growth Secrets</li>
+            <li><span class="ck">✓</span> Lifetime Access</li>
+            <li><span class="ck">✓</span> All Future Updates — free</li>
+          </ul>
+
+          <div class="timer-row" id="countdown">
+            <div class="timer-box">
+              <div class="n" id="t-hrs">05</div>
+              <div class="l">Hrs</div>
+            </div>
+            <div class="timer-box">
+              <div class="n" id="t-min">47</div>
+              <div class="l">Min</div>
+            </div>
+            <div class="timer-box">
+              <div class="n" id="t-sec">39</div>
+              <div class="l">Sec</div>
+            </div>
+          </div>
+
+          <a href="https://selar.com/365w51bydv" class="btn btn-primary"
+            >Yes! I want the training for ₦9,999</a
+          >
+          <p class="fine">
+            Secure payment · Instant access · Free lifetime updates
+          </p>
+
+          <div class="warn-list">
+            <div>⚠️ Price may increase without notice</div>
+            <div>⚠️ Access may close anytime</div>
+            <div>⚠️ Secure your lifetime access today</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Everything you're wondering, answered</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q">
+              How long do I have access? <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Forever. This is a one-time payment with lifetime access,
+                including all future updates to the training at no extra cost.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Can beginners learn this? <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Yes. The training assumes zero prior experience and walks
+                through every step on screen, from your first transformation to
+                publishing a finished video.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Do I need expensive software? <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                No. The training covers free and paid tool options, and the core
+                workflow can be done without buying any paid software.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Can I use my phone? <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Yes. The entire workflow was built phone-first — a laptop is
+                optional, not required.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              Can I make money with this skill? <span class="plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>
+                Yes. Module 4 is a full monetization blueprint covering pricing,
+                packaging and outreach scripts for selling this as a service.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="final-cta">
+      <div class="wrap">
+        <span class="eyebrow">The future of content is AI</span>
+        <h2>
+          Will you watch everyone else go viral… or will you become the creator
+          everyone is talking about?
+        </h2>
+        <p class="sub">One-time payment · Lifetime access · Instant delivery</p>
+        <a href="https://selar.com/365w51bydv" class="btn btn-primary"
+          >Join the training now for ₦9,999</a
+        >
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        © 2026 AI Face Transformation Training. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- ============ STICKY FOOTER ============ -->
+    <div class="sticky-footer">
+      <div class="info">
+        <b>AI Face Transformation</b
+        ><span><span class="strike">₦25,000</span> → ₦9,999 today</span>
+      </div>
+      <a href="https://selar.com/365w51bydv" class="btn btn-primary"
+        >Join now — ₦9,999</a
+      >
+    </div>
+
+    <script>
+      // FAQ accordion
+      document.querySelectorAll(".faq-item").forEach((item) => {
+        const q = item.querySelector(".faq-q");
+        const a = item.querySelector(".faq-a");
+        q.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
+          document.querySelectorAll(".faq-item.open").forEach((o) => {
+            if (o !== item) {
+              o.classList.remove("open");
+              o.querySelector(".faq-a").style.maxHeight = null;
+            }
+          });
+          if (isOpen) {
+            item.classList.remove("open");
+            a.style.maxHeight = null;
+          } else {
+            item.classList.add("open");
+            a.style.maxHeight = a.scrollHeight + "px";
+          }
+        });
+      });
+
+      // Countdown timer (5h 47m 39s, then keeps counting down and loops)
+      (function () {
+        let total = 5 * 3600 + 47 * 60 + 39;
+        const hrsEl = document.getElementById("t-hrs");
+        const minEl = document.getElementById("t-min");
+        const secEl = document.getElementById("t-sec");
+        function pad(n) {
+          return String(n).padStart(2, "0");
+        }
+        function tick() {
+          if (total <= 0) {
+            total = 5 * 3600 + 47 * 60 + 39;
+          } // loop for demo purposes
+          const h = Math.floor(total / 3600);
+          const m = Math.floor((total % 3600) / 60);
+          const s = total % 60;
+          hrsEl.textContent = pad(h);
+          minEl.textContent = pad(m);
+          secEl.textContent = pad(s);
+          total--;
+        }
+        tick();
+        setInterval(tick, 1000);
+      })();
+
+      // Hide sticky footer near the pricing card to avoid overlap on small screens
+      const pricing = document.getElementById("pricing");
+      const stickyFooter = document.querySelector(".sticky-footer");
+      if (pricing && stickyFooter) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              stickyFooter.style.transform = e.isIntersecting
+                ? "translateY(120%)"
+                : "translateY(0)";
+              stickyFooter.style.transition = "transform .3s ease";
+            });
+          },
+          { threshold: 0.4 },
+        );
+        obs.observe(pricing);
+      }
+    </script>
+  </body>
+</html>
